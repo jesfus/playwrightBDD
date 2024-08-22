@@ -25,11 +25,18 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run update-test script
+      - name: Run Playwright tests
+        id: playwright-tests
+        run: |
+          npm run tests || echo "TESTS_FAILED=true" >> $GITHUB_ENV
+
+      - name: Run update-test script if tests failed
+        if: env.TESTS_FAILED == 'true'
         run: npm run update-tests
 
-      - name: Run Playwright tests
-        run: npm run tests
+      - name: Re-run Playwright tests if updated
+        if: env.TESTS_FAILED == 'true'
+        run: npx playwright test
 
       - uses: actions/upload-artifact@v4
         if: always()
