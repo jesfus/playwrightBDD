@@ -26,7 +26,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run update-test script
-        run: npm run update-test
+        run: npm run update-tests
 
       - name: Run Playwright tests
         run: npm run tests
