@@ -1,0 +1,24 @@
+{
+  "name": "playwright-bdd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "tests": "npx bddgen && npx playwright test",
+    "tests-ui": "npx bddgen && npx playwright test --ui",
+    "tests-headed": "npx bddgen && npx playwright test --headed",
+    "code-gen": "npx playwright codegen",
+    "update-tests": "npx playwright test --update-snapshots",
+    "update-tests-ui": "npx playwright test --headed --update-snapshots",
+    "bddgen-export": "npx bddgen export"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@types/node": "^22.2.0",
+    "playwright": "^1.46.0",
+    "playwright-bdd": "^7.2.2"
+  }
+}
