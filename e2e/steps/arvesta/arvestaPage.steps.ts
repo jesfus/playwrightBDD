@@ -55,7 +55,3 @@ class ArvestaPage {
     await expect(this.page).toHaveScreenshot(`"${expectedTitle}.png`);
   }
 }
-// Export the test variable as required by npx bddgen
-export const test = {
-  ArvestaPage,
-};

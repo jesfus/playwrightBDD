@@ -34,7 +34,6 @@ class AveveagrarischPage {
       `ul.bg-dealerOverview-list > li:has-text("${cityName}")`
     );
 
-    // Assert that at least one <li> contains the text "Mollem"
     await expect(liLocator).toHaveCount(1);
   }
 

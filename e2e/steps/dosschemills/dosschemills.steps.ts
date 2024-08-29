@@ -47,12 +47,10 @@ class DosschemillsPage {
       .locator("li")
       .filter({ hasText: term })
       .getByTestId("text-link");
-    // Method body not filled
   }
 
   @When("I click on one of the products with text {string}")
   async clickArtipanProduct(term: string) {
-    // Method body not filled
     const productTest = this.page
       .locator("li")
       .filter({ hasText: term })
