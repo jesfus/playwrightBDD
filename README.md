@@ -1,18 +1,18 @@
 # Playwright + BDD
 
-Behavior-Driven Development (BDD) is an Agile software development methodology that focuses on collaboration between developers, testers, and business stakeholders to ensure that the software being developed meets business requirements. Here's how BDD testing works:
+Behavior-Driven Development (BDD) is an Agile software development methodology that focuses on collaboration between developers, testers, and business stakeholders to ensure that the developed software meets business requirements. Here's how BDD testing works:
 
 ## Overview of BDD
 
 - **Collaboration**: BDD emphasizes collaboration among the "Three Amigos" — business stakeholders, developers, and testers. This collaboration ensures that everyone has a shared understanding of the desired behavior of the application.
-- **Natural Language**: BDD uses a domain-specific language (DSL) that is readable by non-technical stakeholders. This language, often implemented using Gherkin syntax, allows teams to write test scenarios in plain English, making them accessible to all parties involved.
-- **Focus on Behavior**: Instead of focusing solely on functionality, BDD centers on the behavior of the application as it relates to business needs. This helps ensure that the software aligns with what the stakeholders want.
+- **Natural Language**: BDD uses a domain-specific language (DSL) readable by non-technical stakeholders. This language, often implemented using Gherkin syntax, allows teams to write test scenarios in plain English, making them accessible to all parties involved.
+- **Focus on Behavior**: Instead of focusing solely on functionality, BDD centres on the behaviour of the application as it relates to business needs. This helps ensure that the software aligns with what the stakeholders want.
 
 ## How BDD Testing Works
 
-- **Feature Files**: BDD scenarios are written in feature files using the **[Gherkin](https://cucumber.io/docs/gherkin/reference/)** syntax. These files describe the expected behavior of the application in a structured format using Given-When-Then statements (the extension of this files are **.feature**).
+- **Feature Files**: BDD scenarios are written in feature files using the **[Gherkin](https://cucumber.io/docs/gherkin/reference/)** syntax. These files describe the expected behaviour of the application in a structured format using Given-When-Then statements (the extension of this file are **.feature**).
   - **Given**: Sets up the initial context or preconditions.
-  - **When**: Describes the action or event that triggers the behavior.
+  - **When**: Describes the action or event that triggers the behaviour.
   - **Then**: Specifies the expected outcome or result.
 - **Step Definitions**: Each line in a feature file is mapped to code using step definitions. These are the glue code that connects the plain language scenarios to executable code.
 
@@ -23,7 +23,7 @@ Behavior-Driven Development (BDD) is an Agile software development methodology t
 
 - **Improved Communication**: By using a common language and involving all stakeholders, BDD improves communication and reduces misunderstandings.
 - **Alignment with Business Goals**: BDD ensures that the development process is aligned with business objectives, leading to more relevant and valuable software.
-- **Enhanced Test Coverage**: By focusing on behavior, BDD often results in more comprehensive test coverage, identifying edge cases that might be missed with traditional testing approaches.
+- **Enhanced Test Coverage**: By focusing on behaviour, BDD often results in more comprehensive test coverage, identifying edge cases that might be missed with traditional testing approaches.
   Tools for BDD
 
 ## Requirements
@@ -31,54 +31,35 @@ Behavior-Driven Development (BDD) is an Agile software development methodology t
 - [Have installed nvm](https://github.com/nvm-sh/nvm)
 - [Have installed direnv ](https://direnv.net/docs/installation.html)
 
-Having these two installled packages once the project is downloaded and when we open the terminal configured with direnv it will automatically install with nvm the needed node version and It will use it.
-
-## Authors
-
-- [@octokatherine](https://www.github.com/octokatherine)
+Having these two installed packages once the project is downloaded and when we open the terminal configured with direnv it will automatically install with nvm the needed node version and It will use it.
 
 ## Libraries
 
-For this project we have used next libraries, for more information:
+For this project we have used the following libraries, for more information:
 
 - [Playwright](https://playwright.dev/docs/intro)
 - [Playwright-bdd](https://vitalets.github.io/playwright-bdd/#/)
 
 ## Installation
 
-After have installed nvm and direnv just install all dependecies with npm.
+After have installed nvm and direnv just install all dependencies with npm.
 
 ```bash
   npm install
 ```
 
-## Demo
+# Folder and file structure
 
-Insert gif or link to demo
-
-## FAQ
-
-#### Question 1
-
-Answer 1
-
-#### Question 2
-
-Answer 2
-
-## Folder and files structure
-
-Project is structured in the next folders:
+The project is structured in the next folders:
 
 - playwright.config.ts
 - e2e
 - .feature-gen
 - playwright-report
-- test-results
 - utils
-- .github
+- .github/workflows
 
-### playwright.config.ts
+## playwright.config.ts
 
 This file is the configuration file for Playwright.
 
@@ -89,7 +70,7 @@ This file is the configuration file for Playwright.
 - **Parallel Execution**: Tests are configured to run fully in parallel to speed up execution.
 - **CI Settings**: - **forbidOnly** ensures that the build fails if test.only is left in the code, which is useful for continuous integration (CI) environments. - **retries** are set to 2 on CI, allowing tests to be retried twice upon failure. - **workers** are limited to 1 on CI to opt out of parallel execution, which can help with resource constraints on CI servers.
   **Reporting**:
-- **The reporter** is set to "html", meaning test results will be output in an HTML format which will be placed into folder the **playwright-report**.
+- **The reporter** is set to "html", meaning test results will be output in an HTML format which will be placed into the folder the **playwright-report**.
   **Artifacts:**
 - **Videos** are retained only on test failures (video: "retain-on-failure").
 - **Screenshots** are taken only on failure (screenshot: "only-on-failure").
@@ -102,14 +83,14 @@ This file is the configuration file for Playwright.
 - **Firefox:** Uses the configuration for "Desktop Firefox".
   This configuration file is tailored for running Playwright tests with BDD features, managing test execution in different environments, and supporting multiple browser targets.
 
-# e2e folder
+## e2e folder
 
-This is the most important folder where developer will be working for test creation/definition.
-Into this folder we can find 3 subfoldes: features/fixures/steps
+This is the most important folder where the developer will be working for test creation/definition.
+Into this folder, we can find 3 subfolders: features/fixures/steps
 
-## Features folder
+### e2e/features folder
 
-As was defined in the **playwright.config.ts** file in this folder will contain all **.feature** files for BDD feature scenarios tests definition.
+As was defined in the **playwright.config.ts** file ihis folder will contain all **.feature** files for BDD feature scenarios tests definition.
 As an example:
 
 ```bash
@@ -136,15 +117,16 @@ Feature: Arvesta brand site
 ```
 
 We can see two parts here, one is the **Scenario** definition and the second one is the **Scenario Outline** (not mandatory) This scenario outline allows for testing multiple examples with different inputs.
-It means this scenario will be executed 3 times(one foreach Examples row) with 3 different values which needs to matches with the variables defined in the **Scenario Outline**
+It means this scenario will be executed 3 times(one for each Examples row) with 3 different values which need to match with the variables defined in the **Scenario Outline**
 
-## Steps folder
+### e2e/steps folder
 
 This folder will contain all **.ts** that will map with the .feature files.
-Each line in a **.feature** file into **/features** folder is mapped to code using step definitions. These are the glue code that connects the plain language scenarios to executable code.
+Each line in a **.feature** file in **/features** folder is mapped to code using step definitions. These are the glue code that connects the plain language scenarios to executable code.
 
 **_IMPORTANT:_**
-A **.feature** definition can't be defined more than once in the steps that's why into steps has been created a file **common.steps.ts**, here we see the content:
+
+**\*A **.feature** definition can't be defined more than once in the steps that's why into steps has been created a file **common.steps.ts**, here we see the content:\***
 
 ```bash
 export default
@@ -164,7 +146,7 @@ class CommonSteps {
 }
 ```
 
-these are steps that are repeated in different scenarios which cannot be re-defined each time, that's why we create one common definition for all scenarios that want reuse them in the **.features** files. Otherwhise when execute tests it will crash.
+these are steps that are repeated in different scenarios and cannot be re-defined each time, that's why we create one common definition for all scenarios that want to reuse in the **.features** files. Otherwise, when executing tests it will crash.
 
 In this steps folder .ts files should be created and grouped by fixture which can contain several scenarios.
 
@@ -190,7 +172,7 @@ class ArvestaPage {
     // Ensure the link is visible and interactable before clicking
     await linkLocator.waitFor({ state: "visible" });
 
-    //important to leave some time for the menu to appear
+    //important to leave some time for the menu to appear to
     await this.page.waitForTimeout(500);
 
     //force mouse event otherwise will not work
@@ -228,11 +210,11 @@ class ArvestaPage {
 }
 ```
 
-As we can see here this class will contains all definitions for the fixture **checkingArvestaBrands** which can be easily grouped for specific fixtures definitions.
+As we can see here this class will contain all definitions for the fixture **checkingArvestaBrands** which can be easily grouped for specific fixture definitions.
 
-## Fixture folder
+### e2e/fixture folder
 
-It will contain a only one file **fixtures.ts** which will be define all fixtures desired and for each fixture which step file will be used for this definition.
+It will contain only one file **fixtures.ts** which will define all fixtures desired and for each fixture which step file will be used for this definition.
 in the next code you can see the **fixtures.ts** content:
 
 ```bash
@@ -255,17 +237,53 @@ export const test = base.extend<Fixtures>({
 });
 ```
 
-Here has been created a new test const for exends as much fixtures as desired, in this case
-we have created the **commonSteps** features which will be resolved by class into steps folder **CommonSteps** and the fixture **checkingArvestaBrands** which will be resolved by **ArvestaPage**.
+There has been created a new test const for extends as many fixtures as desired, in this case
+we have created the **commonSteps** features which will be resolved by class into the steps folder **CommonSteps** and the fixture **checkingArvestaBrands** which will be resolved by **ArvestaPage**.
 
 **_IMPORTANT:_**
-the fixtures names defined into const test (commonSteps and checkingArvestaBrands) should match with the definition of the step classes Fixture decorator. Otherwise it will end with an error because will not find the expected fixture name
+
+**_The fixture names defined in the const test (commonSteps and checkingArvestaBrands) should match with the definition of the step classes Fixture decorator. Otherwise, it will end with an error because will not find the expected fixture name_**
+
 Example:
 
 ```bash
 export default @Fixture("checkingArvestaBrands")
 class ArvestaPage {}
 ```
+
+## .feature-gen folder
+
+Inside this folder PlaywrightBDD library will generate all tests using features (**.features**) and steps files.
+This folder can be deleted since is autogenerated when this command is executed:
+
+```bash
+npx bddgen
+```
+
+what basically does is use features and steps to generate new tests .js files. These tests will be the ones that later on we will execute via playwright commands.
+
+## playwright-report folder
+
+As in the previous folder, this is an autogenerated folder. This folder is generated every time this command is used:
+
+```bash
+npx playwright test
+```
+
+This will use the test created before by the PlaywrightBDD library (npx bddgen) and execute them providing a report about which tests have passed and which have failed and why.
+
+## utils folder
+
+This folder contains as the name says generic ultilitis/methods that can be reuse in all tests to extract generic locators etc.
+
+## .github/workflows
+
+This is a specific folder for CI/CD for Github.
+Currently has been created a **playwright.yaml** file which installs all needed dependencies, and then executes all tests if they fail try to update all screenshot tests and retry it.
+once the pipeline has been executed in the **_Actions_** tab, we can check the pipeline more deeply.
+In case the pipeline has failed we can download Artifacts by extending the step Run actions/upload-artifact@v4 where we will see an artifact link such as
+
+https://github.com/user/playwrightBDD/actions/runs/12509460101/artifacts/1257548671
 
 ## Running Tests
 
@@ -275,23 +293,32 @@ To run tests, run the following command
   npm run test
 ```
 
-## Tips
+## Tips to create tests
 
-In order to make as easy as posible the creation and definiton of test i will suggest follow the next steps:
+To make as easy as possible the creation and definition of test will suggest following thenext steps:
 
-1. Collect the fixture user case (<User case>) from customer.
-2. Send this text to the promt AI overriting <User case> by the user case collected.
-   Create Page Object Model 'TodoPage' in TypeScript for the following feature:
-   <User case> . _ Use 'page' from '@playwright/test' as constructor parameter. _ Use Given, When, Then from 'playwright-bdd/decorators' as BDD decorators, for example: @Given('pattern {string}'). \* Don't fill methods body.
+1. Collect the fixture user case (**<User case>**) from customer.
 
-Let's imagine that the <User case> in this example is : As a user I want to manage a page behaviour: create items, complete items and filter to see only completed items.
+2. Send this text to the promt AI overriting **<User case>** by the user case collected.
 
-the input ended will be like this:
-
+```bash
 Create Page Object Model 'TodoPage' in TypeScript for the following feature:
-As a user I want to manage a page behaviour: create items, complete items and filter to see only completed items. . _ Use 'page' from '@playwright/test' as constructor parameter. _ Use Given, When, Then from 'playwright-bdd/decorators' as BDD decorators, for example: @Given('pattern {string}'). \* Don't fill methods body.
+<User case> . * Use 'page' from '@playwright/test' as constructor parameter. * Use Given, When, Then from 'playwright-bdd/decorators' as BDD decorators, for example: @Given('pattern {string}'). * Don't fill methods body.
+```
 
-3. Collect AI output it should be something like this:
+Let's imagine that the **<User case>** in this example is: As a user, I want to manage a page behaviour: create items, complete items and filter to see only completed items.
+
+the input will be like this:
+
+```bash
+Create Page Object Model 'TodoPage' in TypeScript for the following feature:
+As a user, I want to manage a page behaviour:
+create items, complete items and filter to see only completed items.
+* Use 'page' from '@playwright/test' as constructor parameter.
+* Use Given, When, Then from 'playwright-bdd/decorators' as BDD decorators, for example: @Given('pattern {string}'). * Don't fill the methods body.
+```
+
+3. Collect AI output, it should be something like this:
 
 ```bash
 import { Page } from '@playwright/test';
@@ -337,12 +364,13 @@ export class TodoPage {
 
 ```
 
-Now we have more or less our steps created so we can create a .ts file into the steps folder with the desired name and copy paste this code iside.
-Don't forget to add de decorator @Fixture with the desired fixture name for this example we will called "myFirstSteps".
-Also important add this new file into **/steps/index.ts** file to export it
+Now we have more or less our steps created so we can create a .ts file into the steps folder with the desired name and copy-paste this code inside.
+Don't forget to add de decorator @Fixture with the desired fixture name for this example we will call "myFirstSteps".
+Also important to add this new file into **/steps/index.ts** file to export it
 
-4. Add this step into fixture.ts file.
-   to do this add into the const test definition the new fixture refering the new class already created before. Lets imagine we have created this class as MyFirstSteps then we create a new fixture called myFirstSteps that will be defined by our class MyFirstSteps from steps folder
+4. Add this step to **fixture.ts** file.
+
+   To do this add into the const test definition the new fixture referring to the new class already created before. Let's imagine we have created this class as MyFirstSteps then we create a new fixture called myFirstSteps that will be defined by our class MyFirstSteps from the steps folder
 
 ```bash
 import {
@@ -368,12 +396,13 @@ export const test = base.extend<Fixtures>({
 ```
 
 5. Create **.feature** file.
+
    Return to **/steps/index.ts** and comment on all export steps except the last one created (MyFirstSteps).
 
 ```bash
 // export { default as ArvestaPage } from "e2e/steps/arvesta/arvestaPage.steps";
 // export { default as CommonSteps } from "e2e/steps/common.steps";
-export { default as MyTest } from "e2e/steps/tirar/myTest.steps";
+export { default as MyTest } from "e2e/steps/myTest/myTest.steps";
 
 ```
 
@@ -383,7 +412,7 @@ now execute the next command:
 npx bddgen export
 ```
 
-in your output terminal you will see all <Gherkin steps> defined for your .feature file:
+in your output terminal you will see all **<Gherkin steps>** defined for your .feature file:
 
 ```bash
 * Given the user is on the todo page
@@ -394,18 +423,18 @@ in your output terminal you will see all <Gherkin steps> defined for your .featu
 * Then the todo item with text {string} should not be visible
 ```
 
-Now come back to the AI and past this code overwriting <Gherkin steps> by the steps provided before by the command **_npx bddgen export_** :
+Now come back to the AI and past this code overwriting **<Gherkin steps>** by the steps provided before by the command npx bddgen export :
 Generate BDD scenarios as a single Gherkin file strictly using only the following steps:
-<Gherkin steps>
+**<Gherkin steps>**
 
-and voilà this should looks like this:
+and voilà this should look like this:
 
 ```bash
 Feature: Manage Todo Items
 
   Scenario: Create a todo item
     Given the user is on the todo page
-    When the user creates a todo item with text "Buy groceries"
+    When the user creates a todo item with the text "Buy groceries"
     Then the todo item with text "Buy groceries" should be visible
 
   Scenario: Complete a todo item
@@ -452,4 +481,4 @@ Feature: Manage Todo Items
     | "Walk dog"    | "Cook dinner"  |
 ```
 
-where we can override it with real text scenarios for the Examples
+where we can override it by real text scenarios for the Examples
